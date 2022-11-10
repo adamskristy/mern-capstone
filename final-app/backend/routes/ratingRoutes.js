@@ -1,5 +1,11 @@
 const express = require('express')
 const router = express.Router()
+//const ratingCtrl = require('../controllers/ratingControllers')
+
+//router.get('/add', ratingCtrl.add)
+//router.get('/profile', ratingCtrl.profileRatings)
+//router.get('/index', ratingCtrl.getAllRatings)
+
 
 const { 
     createRating,
@@ -30,9 +36,9 @@ router.patch('/:id', updateRating)
 /////////////////////////////
 
 // GET profile rating
-router.get('/profile/:id', profileRatings)
+router.get('/profile', profileRatings)
 
-// CREATE rating for specific user //
-router.post('/', add)
+// CREATE rating for specific user // fix this !!
+router.post('/add', add)
 
 module.exports = router

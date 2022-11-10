@@ -20,7 +20,7 @@ function RatingForm () { //need to pass {user}
         let token = localStorage.getItem("token")
 
         try {
-            const response = await axios.get('http://localhost:8080/rate-my-tutorial/index', {
+            const response = await axios.get('http://localhost:8080/rate-my-tutorial', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -31,7 +31,7 @@ function RatingForm () { //need to pass {user}
     }
 
     useEffect(() => {
-        getAllRatings
+        getAllRatings()
     },[])
 
   function handleChange(event) {

@@ -12,7 +12,7 @@ function authorize(req, res, next) {
             throw new Error('No token provided')
         }
     
-        //    token -> "Bearer 090jlsdk89398jflgjdfg9839579352"
+        //    token -> "Bearer  090jlsdk89398jflgjdfg9839579352"
         token = token.replace("Bearer ", "")
  
         // 2. Check that the token provided is valid and not expired
