@@ -1,13 +1,15 @@
 const express = require('express')
 const cors = require('cors')
-require('dotenv').config()
 
 const mongoConfig = require('./config')
+require('dotenv').config()
 
 // imports
 const ratingRoutes = require('./routes/ratingRoutes')
 const userRoutes = require('./routes/userRoutes')
 const authRoutes = require('./routes/authRoutes')
+
+// const { authorize } = require('./middleware/authMiddleware')
 
 // create express app
 const app = express()
@@ -21,8 +23,8 @@ app.use((req, res, next) => {
 })
 
 // ROUTES
-app.use('/auth', authRoutes)
-app.use('/rate-my-tutorial', ratingRoutes)
+app.use('/rate-my-tutorial/auth', authRoutes)
+app.use('/rate-my-tutorial/', ratingRoutes)
 app.use('/rate-my-tutorial/users', userRoutes)
 
 //listen on port

@@ -9,8 +9,6 @@ const ratingSchema = new Schema({
     link: { type: String, required: true },
     title: { type: String, required: true },
     notes: { type: String, required: true },
-    stars: {type: Number, max: 5, required: true},
-    user: { type: String, required: true }
     
 }, {timestamps: true })
 

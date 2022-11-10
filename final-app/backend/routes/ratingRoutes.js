@@ -27,6 +27,8 @@ router.delete('/:id', deleteRating)
 // UPDATE a rating
 router.patch('/:id', updateRating)
 
+/////////////////////////////
+
 // GET profile rating
 router.get('/profile/:id', profileRatings)
 
