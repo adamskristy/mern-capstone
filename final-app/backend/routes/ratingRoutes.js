@@ -4,7 +4,7 @@ const router = express.Router()
 
 //router.get('/add', ratingCtrl.add)
 //router.get('/profile', ratingCtrl.profileRatings)
-//router.get('/index', ratingCtrl.getAllRatings)
+//router.get('/', ratingCtrl.getAllRatings)
 
 
 const { 

@@ -20,8 +20,8 @@ function Register({ setUser }) {
         e.preventDefault()
         try {
             // second argument (form) is info that needs to be passed
-            const response = await axios.post('http://localhost:8080/register', form)
-            const info = await axios.get('http://localhost:8080/info/', {
+            const response = await axios.post('http://localhost:8080/auth/register', form)
+            const info = await axios.get('http://localhost:8080/user/info/', {
                 headers: {
                     'Authorization': `Bearer ${response.data.token}`
                 }

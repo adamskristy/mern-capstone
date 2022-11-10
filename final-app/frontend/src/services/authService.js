@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosAuth = axios.create({
-    baseURL: 'http://localhost:8080/rate-my-tutorial/auth'
+    baseURL: 'http://localhost:8080/auth'
 })
 
 const login = (userCredentials) => {

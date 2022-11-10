@@ -76,7 +76,7 @@ const profileRatings = async (req, res) => {
 const add = async (req, res) => {
     try {
         const createdRatingForCurrentUser = await Rating.create(req.body) 
-        res.status(200).json({ todo: createdRatingForCurrentUser })
+        res.status(200).json({ rating: createdRatingForCurrentUser })
     } catch (error) {
         res.status(400).json({ error: error.message })
     }

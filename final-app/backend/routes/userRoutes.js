@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const userCtrl = require('../controllers/userController')
 
-router.get('/profile', userCtrl.profile)
+router.get('/info', userCtrl.info)
 router.delete('/clear', userCtrl.clear)
 router.get('/all', userCtrl.allUsers)
 

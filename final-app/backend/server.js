@@ -1,8 +1,10 @@
 const express = require('express')
 const cors = require('cors')
 
-const mongoConfig = require('./config')
 require('dotenv').config()
+const mongoConfig = require('./config')
+
+
 
 // imports
 const ratingRoutes = require('./routes/ratingRoutes')
@@ -23,12 +25,13 @@ app.use((req, res, next) => {
 })
 
 // ROUTES
-app.use('/rate-my-tutorial/auth', authRoutes)
-app.use('/rate-my-tutorial/', ratingRoutes)
-app.use('/rate-my-tutorial/users', userRoutes)
+app.use('/auth', authRoutes)
+app.use('/', ratingRoutes)
+app.use('/user', userRoutes)
 
 //listen on port
+
 app.listen(process.env.PORT, () => {
-    console.log('listening on port 8080...')
+    console.log('Listening on port...')
     mongoConfig()
 })

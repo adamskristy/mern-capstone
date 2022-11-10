@@ -20,8 +20,8 @@ function Login({ setUser }) {
 
         try {
             
-            const response = await axios.post('http://localhost:8080/login', form) 
-            const info = await axios.get('http://localhost:8080/info/', {
+            const response = await axios.post('http://localhost:8080/auth/login', form) 
+            const info = await axios.get('http://localhost:8080/user/info', {
                 headers: {
                     'Authorization': ` Bearer ${response.data.token}`
                 }

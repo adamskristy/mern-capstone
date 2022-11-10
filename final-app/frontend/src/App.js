@@ -95,6 +95,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import Navbar from "./components/Navbar";
+import Add from "./pages/Add";
 
 
 function App() {
@@ -107,6 +108,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='/add' element={<Add />}/>
         </Routes>
       </div>
 

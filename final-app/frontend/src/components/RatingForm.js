@@ -1,8 +1,11 @@
 import  axios  from "axios";
-import React, { useEffect, useState } from 'react';
+import  { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 
 function RatingForm () { //need to pass {user}
+    const navigate = useNavigate()
+
     const [formData, setFormData] = useState(
         {
             cost: "",
@@ -14,25 +17,6 @@ function RatingForm () { //need to pass {user}
         }
     )
   //console.log(formData)
-
-    const getAllRatings = async () => {
-       
-        let token = localStorage.getItem("token")
-
-        try {
-            const response = await axios.get('http://localhost:8080/rate-my-tutorial', {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            })
-        } catch (error){
-
-        }
-    }
-
-    useEffect(() => {
-        getAllRatings()
-    },[])
 
   function handleChange(event) {
     //console.log(event)
@@ -48,7 +32,7 @@ function RatingForm () { //need to pass {user}
     const handleSubmit = async (event) => {
         event.preventDefault()
 
-        let token = localStorage.getItem("token")
+        //let token = localStorage.getItem("token")
 
         let newRating = {
             cost: formData.cost,
@@ -61,11 +45,11 @@ function RatingForm () { //need to pass {user}
         }
 
         try {
-            const response = await axios.post('http://localhost:8080/rate-my-tutorial/add', newRating, {
-                headers: {
-                    'Authorization': ` Bearer ${token}`
-                }
-            })
+            const response = await axios.post('http://localhost:8080/', newRating)
+                console.log('Submission successful')
+                
+                navigate('/')
+            
     } catch (error) {
         console.log(error)
     }
@@ -154,6 +138,7 @@ function RatingForm () { //need to pass {user}
                     <br/>
                     <button>Submit</button>
             </form>
+            
         </div>
      );
 }

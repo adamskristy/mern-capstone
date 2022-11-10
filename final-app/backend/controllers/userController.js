@@ -1,7 +1,7 @@
 const User = require('../models/User')
 
 // specific user info
-const profile = async (req, res) => {
+const info = async (req, res) => {
     // req.params.username
     // req.userId
     console.log('made it to our route!')
@@ -40,7 +40,7 @@ const clear = async (req, res) => {
 }
 
 module.exports = {
-    profile,
+    info,
     allUsers,
     clear
 }

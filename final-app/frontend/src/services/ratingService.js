@@ -6,7 +6,7 @@ const getToken = () => {
 }
 
 const axiosTodos = () => axios.create({
-    baseURL: 'http://localhost:8080/rate-my-tutorial/',
+    baseURL: 'http://localhost:8080/',
     headers: {
         'Authorization': `Bearer ${getToken()}`
     }
