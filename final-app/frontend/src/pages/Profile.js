@@ -1,18 +1,21 @@
 import { useNavigate } from "react-router-dom";
 
-function Profile () {
+function Profile({ username, email }) {
     const navigate = useNavigate()
-    const handleClick= async () => {
+    const handleClick = async () => {
         navigate('/add')
     }
 
-    return ( 
+    return (
         <div className="profile">
             <h1>Profile</h1>
+            <h3>Account Information</h3>
+            <p>Username: {username}</p>
+            <p>Email: {email}</p>
 
             <button onClick={handleClick}>Submit new rating</button>
         </div>
-     );
+    );
 }
 
-export default Profile ;
+export default Profile;

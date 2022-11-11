@@ -4,7 +4,7 @@ const cors = require('cors')
 require('dotenv').config()
 const mongoConfig = require('./config')
 
-// imports
+// import ROUTES
 const ratingRoutes = require('./routes/ratingRoutes')
 const userRoutes = require('./routes/userRoutes')
 const authRoutes = require('./routes/authRoutes')
@@ -22,13 +22,12 @@ app.use((req, res, next) => {
     next()
 })
 
-// ROUTES
+// Middleware for ROUTES
 app.use('/auth', authRoutes)
 app.use('/', ratingRoutes)
 app.use('/user', userRoutes)
 
 //listen on port
-
 app.listen(process.env.PORT, () => {
     console.log('Listening on port...')
     mongoConfig()

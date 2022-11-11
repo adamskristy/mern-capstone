@@ -1,18 +1,19 @@
 const User = require('../models/User')
 
-// specific user info
+// GET specific user info
 const info = async (req, res) => {
     // req.params.username
     // req.userId
     console.log('made it to our route!')
-    console.log('user id:', req.userId)
+    //console.log('user id:', req.userId)
     try {
-        const foundUser = await User.findById(req.userId)
-        
+        // const foundUser = await User.findById(req.userId)
+        const foundUser = await User.findOne({ username: req.params.username})
+
         res.status(200).json({ 
             username: foundUser.username, 
             email: foundUser.email 
-        })
+        }) 
 
     } catch (error) {
         res.status(400).json({ error: error.message })
@@ -39,8 +40,19 @@ const clear = async (req, res) => {
     }
 }
 
+// DELETE specific user
+const clearOne = async (req, res) => {
+    try {
+        await User.findOneAndDelete({ username: req.params.username})
+        res.status(200).json({ msg: 'User has been deleted '})
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+}
+
 module.exports = {
     info,
     allUsers,
-    clear
+    clear,
+    clearOne
 }

@@ -1,12 +1,10 @@
 import axios from 'axios'
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 function Login({ setUser }) {
 
-    const navigate = useNavigate()
 
-    let [form, setForm] = useState({ 
+    let [form, setForm] = useState({
         username: '',
         password: ''
     })
@@ -18,18 +16,17 @@ function Login({ setUser }) {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+
         try {
-            
-            const response = await axios.post('http://localhost:8080/auth/login', form) 
-            const info = await axios.get('http://localhost:8080/user/info', {
-                headers: {
-                    'Authorization': ` Bearer ${response.data.token}`
-                }
-            })
-            
+
+            const response = await axios.post('http://localhost:8080/auth/login', form)
+            const info = await axios.get('http://localhost:8080/user/info/' + form.username)
+
+            console.log(response, info)
+
             localStorage.setItem("token", response.data.token)
             setUser(info.data)
-            navigate('/profile')
+            alert('Login Successful')
 
         } catch (error) {
             //console.log(error)
@@ -37,14 +34,14 @@ function Login({ setUser }) {
         }
     }
 
-    return ( 
+    return (
         <>
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Username:</label>
                 <br />
-                <input 
-                    type="text" 
+                <input
+                    type="text"
                     id="username"
                     name="username"
                     onChange={handleChange}
@@ -53,8 +50,8 @@ function Login({ setUser }) {
                 <br /><br />
                 <label htmlFor="password">Password:</label>
                 <br />
-                <input 
-                    type="password" 
+                <input
+                    type="password"
                     id="password"
                     name="password"
                     onChange={handleChange}
@@ -64,7 +61,7 @@ function Login({ setUser }) {
                 <button>Submit</button>
             </form>
         </>
-     );
+    );
 }
 
 export default Login;

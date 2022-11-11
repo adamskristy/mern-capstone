@@ -20,7 +20,7 @@ const register = async (req, res) => {
         const encryptedPassword = await bcrypt.hash(req.body.password, salt)
 
         const newUser = await User.create({  ...req.body, password: encryptedPassword })
-        res.status(200).json(newUser)
+        //res.status(200).json(newUser) if send both this and token will get error
 
         const payload = { id: newUser._id, user: newUser.username }
         const token = createToken(payload)
@@ -41,7 +41,7 @@ const login = async (req, res) => {
         if (!foundUser) {
             return res.status(404).json({ error: 'No such user exists' })
         }
-        res.status(200).json(foundUser)
+        //res.status(200).json(foundUser)
         console.log("Login success")
 
         const validPass = await bcrypt.compare(req.body.password, foundUser.password)
