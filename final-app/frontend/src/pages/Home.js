@@ -40,7 +40,7 @@ function Ratings () {
 
     return ( 
         <div className="home">
-            <button onClick={handleClick}>Submit new rating</button>
+            
             <div className="ratings-container">
                 {ratings && ratings.map((rating) => {
                     return(
@@ -48,6 +48,9 @@ function Ratings () {
                         <RatingDetails key={rating._id} rating={rating} />
                     )
                 })}
+            </div>
+            <div>
+                <button onClick={handleClick}>Submit new rating</button>
             </div>
             {/* need to pass user={user.username} */}
         </div>

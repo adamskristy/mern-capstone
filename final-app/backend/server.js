@@ -4,8 +4,6 @@ const cors = require('cors')
 require('dotenv').config()
 const mongoConfig = require('./config')
 
-
-
 // imports
 const ratingRoutes = require('./routes/ratingRoutes')
 const userRoutes = require('./routes/userRoutes')
