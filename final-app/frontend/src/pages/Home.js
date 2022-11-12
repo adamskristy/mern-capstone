@@ -2,9 +2,9 @@ import axios from "axios"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import  RatingDetails  from "../components/RatingDetails";
+import RatingDetails from "../components/RatingDetails";
 
-function Ratings () {
+function Ratings() {
     const navigate = useNavigate()
     const [ratings, setRatings] = useState(null)
 
@@ -13,9 +13,9 @@ function Ratings () {
         try {
             const response = await axios.get('http://localhost:8080')
             setRatings(response.data)
-           //console.log(response)
+            //console.log(response)
 
-        }catch (error){
+        } catch (error) {
             console.log(error)
         }
     }
@@ -24,27 +24,16 @@ function Ratings () {
         getAllRatings()
     }, [])
 
-
-    // useEffect(() => {
-    //     const fetchRatings = async () => {
-    //         const response = await axios.get('http://localhost:8080') 
-    //         //console.log(response)           
-    //     }
-        
-    //     fetchRatings()
-    // }, [])
-
-    const handleClick= async () => {
+    const handleClick = async () => {
         navigate('/add')
     }
 
-    return ( 
+    return (
         <div className="home">
-            
+
             <div className="ratings-container">
                 {ratings && ratings.map((rating) => {
-                    return(
-                        // <p key={rating._id}>{rating.title}</p>
+                    return (
                         <RatingDetails key={rating._id} rating={rating} />
                     )
                 })}
@@ -54,7 +43,7 @@ function Ratings () {
             </div>
             {/* need to pass user={user.username} */}
         </div>
-     );
+    );
 }
 
-export default Ratings ;
+export default Ratings;

@@ -1,12 +1,12 @@
 import RatingForm from "../components/RatingForm";
 
-function Add () {
-    return ( 
+function Add({ user }) {
+    return (
         <div>
             <h1>Submit a New Rating</h1>
-            <RatingForm />
+            <RatingForm user={user.username} />
         </div>
-     );
+    );
 }
 
-export default Add ;
+export default Add;

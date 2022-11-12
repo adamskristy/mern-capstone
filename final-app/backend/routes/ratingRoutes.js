@@ -36,7 +36,7 @@ router.patch('/:id', updateRating)
 /////////////////////////////
 
 // GET profile rating
-router.get('/profile', profileRatings)
+router.get('/:user/index', profileRatings)
 
 // CREATE rating for specific user // fix this !!
 router.post('/add', add)

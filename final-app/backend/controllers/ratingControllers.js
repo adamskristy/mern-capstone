@@ -25,10 +25,11 @@ const getRating = async (req, res) => {
 
 // CREATE a new rating
 const createRating = async (req, res) => {
+    const userId = req.userId
     const { cost, type, platform, link, title, notes } = req.body
-
+    
     try {
-        const rating = await Rating.create({ cost, type, platform, title, link, notes })
+        const rating = await Rating.create({ cost, type, platform, title, link, notes, userId })
         res.status(200).json(rating)
         console.log(rating)
     } catch (error) {

@@ -1,9 +1,9 @@
-import  axios  from "axios";
-import  { useState } from 'react';
+import axios from "axios";
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 
-function RatingForm () { //need to pass {user}
+function RatingForm({ user }) { //need to pass {user}
     const navigate = useNavigate()
 
     const [formData, setFormData] = useState(
@@ -13,21 +13,21 @@ function RatingForm () { //need to pass {user}
             platform: "",
             link: "",
             title: "",
-            notes: "",
+            notes: ""
         }
     )
-  //console.log(formData)
+    //console.log(formData)
 
-  function handleChange(event) {
-    //console.log(event)
-    const {name, value, type, checked} = event.target
-    setFormData(prevFormData => { //multiple input so we care about previous state
-        return {
-            ...prevFormData,
-            [name]: type === "checkbox" ? checked : value
-        }
-    })
-  }
+    function handleChange(event) {
+        //console.log(event)
+        const { name, value, type, checked } = event.target
+        setFormData(prevFormData => { //multiple input so we care about previous state
+            return {
+                ...prevFormData,
+                [name]: type === "checkbox" ? checked : value
+            }
+        })
+    }
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -41,109 +41,109 @@ function RatingForm () { //need to pass {user}
             link: formData.link,
             title: formData.title,
             notes: formData.notes,
-            //user
         }
 
         try {
             const response = await axios.post('http://localhost:8080/', newRating)
-                console.log('Submission successful')
-                
-                navigate('/')
-            
-    } catch (error) {
-        console.log(error)
-    }
-  }
+            console.log('Submission successful')
+            console.log(response)
 
-    
-    return ( 
+            navigate('/')
+
+        } catch (error) {
+            console.log(error.response.data.error)
+        }
+    }
+
+
+    return (
         <div>
             <form onSubmit={handleSubmit}>
                 <h3>Submit a Rating</h3>
-                
-                    <label>Cost:</label>
-                    <input 
-                        type="radio" 
-                        id="free" 
-                        name="cost" 
-                        value="free"
-                        checked={formData.cost === "free"} 
-                        onChange={handleChange}
-                    />
-                    <label htmlFor="free">Free</label>
-                    <input 
-                        type="radio" 
-                        id="paid" 
-                        name="cost" 
-                        value="paid"
-                        checked={formData.cost === "paid"} 
-                        onChange={handleChange} 
-                    />
-                    <label htmlFor="paid">Paid</label>
-                    <br/>
 
-                    <label htmlFor='type'>Type: </label>
-                    <select 
-                        id="type" 
-                        name="type"
-                        value={formData.type}
-                        onChange={handleChange}
-                    >
-                       <option value="">Select</option>
-                       <option value="video">Video</option>
-                       <option value="article">Article</option>
-                       <option value="other">Other</option>
-                    </select>
-                    <br/>
+                <label>Cost:</label>
+                <input
+                    type="radio"
+                    id="free"
+                    name="cost"
+                    value="free"
+                    checked={formData.cost === "free"}
+                    onChange={handleChange}
+                />
+                <label htmlFor="free">Free</label>
+                <input
+                    type="radio"
+                    id="paid"
+                    name="cost"
+                    value="paid"
+                    checked={formData.cost === "paid"}
+                    onChange={handleChange}
+                />
+                <label htmlFor="paid">Paid</label>
+                <br />
 
-                    <label>Platform: </label>
-                    <input 
-                        type="text" 
-                        id="platform" 
-                        name="platform" 
-                        placeholder="Ex. YouTube" 
-                        value={formData.platform} 
-                        onChange={handleChange} 
-                    />
-                    <br/>
-                    <label>Title: </label>
-                    <input 
-                        type="text" 
-                        id="title" 
-                        name="title" 
-                        placeholder="Title of video or article" 
-                        value={formData.title} 
-                        onChange={handleChange} 
-                    />
-                    <br/>
-                    <label>Link: </label>
-                    <input 
-                        type="text" 
-                        id="link" 
-                        name="link" 
-                        value={formData.link} 
-                        onChange={handleChange} 
-                    />
-                    <br/>
+                <label htmlFor='type'>Type: </label>
+                <select
+                    id="type"
+                    name="type"
+                    value={formData.type}
+                    onChange={handleChange}
+                >
+                    <option value="">Select</option>
+                    <option value="video">Video</option>
+                    <option value="article">Article</option>
+                    <option value="other">Other</option>
+                </select>
+                <br />
 
-                    {/* Textarea */}
-                    <label>Notes: </label>
-                    <textarea 
-                        id="notes" 
-                        name="notes" 
-                        rows="5" cols="20" 
-                        value={formData.notes} 
-                        onChange={handleChange} 
-                    />
-                    <br/>
-                    <button>Submit</button>
+                <label>Platform: </label>
+                <input
+                    type="text"
+                    id="platform"
+                    name="platform"
+                    placeholder="Ex. YouTube"
+                    value={formData.platform}
+                    onChange={handleChange}
+                />
+                <br />
+                <label>Title: </label>
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    placeholder="Title of video or article"
+                    value={formData.title}
+                    onChange={handleChange}
+                />
+                <br />
+                <label>Link: </label>
+                <input
+                    type="text"
+                    id="link"
+                    name="link"
+                    value={formData.link}
+                    onChange={handleChange}
+                />
+                <br />
+
+                {/* Textarea */}
+                <label>Notes: </label>
+                <textarea
+                    id="notes"
+                    name="notes"
+                    rows="5" cols="20"
+                    value={formData.notes}
+                    onChange={handleChange}
+                />
+                <br />
+                <button>Submit</button>
             </form>
-            
+
         </div>
-     );
+    );
 }
 
-export default RatingForm ;
+export default RatingForm;
 
 
 

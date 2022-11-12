@@ -32,7 +32,7 @@ function App() {
                         />
                     }
                 />
-                <Route path='/add' element={<Add />} />
+                <Route path='/add' element={<Add user={user.username} />} />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         )

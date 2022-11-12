@@ -9,7 +9,7 @@ const ratingRoutes = require('./routes/ratingRoutes')
 const userRoutes = require('./routes/userRoutes')
 const authRoutes = require('./routes/authRoutes')
 
-// const { authorize } = require('./middleware/authMiddleware')
+const { authorize } = require('./middleware/authMiddleware')
 
 // create express app
 const app = express()
@@ -24,8 +24,8 @@ app.use((req, res, next) => {
 
 // Middleware for ROUTES
 app.use('/auth', authRoutes)
-app.use('/', ratingRoutes)
-app.use('/user', userRoutes)
+app.use('/', authorize, ratingRoutes)
+app.use('/user', authorize, userRoutes)
 
 //listen on port
 app.listen(process.env.PORT, () => {
