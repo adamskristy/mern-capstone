@@ -1,4 +1,5 @@
-import { useState, } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import { Navigate, Routes, Route } from "react-router-dom";
 
 import './App.css';
@@ -11,15 +12,60 @@ import Add from "./pages/Add";
 
 import Navbar from "./components/Navbar";
 
+let initialRender = true
 
 function App() {
 
     const [user, setUser] = useState({})
-    //const [admin, setAdmin] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
-    let routes;
+    const currentUserInfo = async (token) => {
+        try {
+  
+            const info = await axios.get('http://localhost:8080/user/info/:username', {
+                headers: {
+                    'Authorization': ` Bearer ${token}`
+                }
+            })
+  
+            const { username, email } = info.data
+            setUser({ username, email })
+            
+        } catch (error) {
+  
+            let message = error.response.data.error
+  
+            if (message.includes('expire')) {
+                localStorage.removeItem('token')
+            }
+            
+            console.log(message)
+  
+        } finally {
+            setIsLoading(false)
+        }
+    }
 
-    if (user.username) {
+    useEffect(() => {
+
+        let token = localStorage.getItem('token')
+  
+        if (initialRender) {
+            if (token) {
+                currentUserInfo(token)
+                initialRender = false
+            } else {
+                setIsLoading(false)
+            }
+        }
+  
+    }, [])
+  
+  let routes;
+  let loggedIn = user.username
+
+  if (!isLoading) {
+    if (loggedIn) {
         routes = (
             <Routes>
                 <Route path="/" element={<Home user={user.username} />} />
@@ -43,9 +89,9 @@ function App() {
                 <Route path="/register" element={<Register setUser={setUser} />} />
                 <Route path="*" element={<Navigate to="/login" />} />
             </Routes>
-        )
+          )
+        }
     }
-
 
     return (
         <div>

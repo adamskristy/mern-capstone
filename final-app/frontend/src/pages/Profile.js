@@ -9,8 +9,16 @@ function Profile({ username, email }) {
     const [ratings, setRatings] = useState(null)
 
     const getUserRatings = async () => {
+
+        let token = localStorage.getItem("token")
+
         try {
-            const response = await axios.get(`http://localhost:8080/info/${username}/index`)
+            const response = await axios.get(`http://localhost:8080/${username}/index`,{
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+
             setRatings(response.data)
             console.log(response)
 

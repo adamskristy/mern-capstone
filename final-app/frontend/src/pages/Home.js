@@ -10,8 +10,16 @@ function Ratings() {
 
 
     const getAllRatings = async () => {
+
+        let token = localStorage.getItem("token")
+
         try {
-            const response = await axios.get('http://localhost:8080')
+            const response = await axios.get('http://localhost:8080', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+
             setRatings(response.data)
             //console.log(response)
 

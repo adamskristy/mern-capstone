@@ -5,6 +5,7 @@ function Navbar({ user, setUser }) {
     const logout = () => {
         setUser({})
         localStorage.removeItem("token")
+        console.log('Logging out')
     }
 
     if (user) {

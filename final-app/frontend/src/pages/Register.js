@@ -21,11 +21,16 @@ function Register({ setUser }) {
         try {
 
             const response = await axios.post('http://localhost:8080/auth/register', form)
-            const info = await axios.get('http://localhost:8080/user/info/' + form.username)
+
+            const info = await axios.get('http://localhost:8080/user/info/' + form.username, {
+                headers: {
+                    'Authorization': ` Bearer ${response.data.token}`
+                }
+            })
 
             localStorage.setItem("token", response.data.token)
             setUser(info.data)
-
+            alert('Registered')
 
         } catch (error) {
             alert(error.response.data.error)

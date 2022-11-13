@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { useState } from "react";
 
-function Login({ setUser }) {
 
+function Login({ setUser }) {
 
     let [form, setForm] = useState({
         username: '',
@@ -16,10 +16,10 @@ function Login({ setUser }) {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-
         try {
 
             const response = await axios.post('http://localhost:8080/auth/login', form)
+
             const info = await axios.get('http://localhost:8080/user/info/' + form.username, {
                 headers: {
                     'Authorization': `Bearer ${response.data.token}`
@@ -31,6 +31,7 @@ function Login({ setUser }) {
             localStorage.setItem("token", response.data.token)
             setUser(info.data)
             alert('Login Successful')
+
 
         } catch (error) {
             //console.log(error)
