@@ -20,7 +20,7 @@ function Profile({ username, email }) {
             })
 
             setRatings(response.data.rating)
-            //console.log(response.data)
+
 
         } catch (error) {
             console.log(error)

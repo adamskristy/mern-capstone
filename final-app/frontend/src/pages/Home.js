@@ -7,7 +7,7 @@ import RatingDetails from "../components/RatingDetails";
 
 function Ratings() {
     const navigate = useNavigate()
-    // const [ratings, setRatings] = useState(null)
+  
     const { ratings, dispatch } = useRatingsContext()
 
 
@@ -24,8 +24,7 @@ function Ratings() {
                 })
 
                 dispatch({ type: 'SET_RATINGS', payload: response.data })
-                //setRatings(response.data)
-                //console.log(response.data)
+            
     
             } catch (error) {
                 console.log(error)

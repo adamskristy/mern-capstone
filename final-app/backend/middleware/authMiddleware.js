@@ -7,7 +7,7 @@ function authorize(req, res, next) {
 
     try {
         let token = req.header("Authorization")
-        //console.log(token)
+    
         if (!token) {
             throw new Error('No token provided')
         }
@@ -23,8 +23,7 @@ function authorize(req, res, next) {
         req.userId = payload.id
         req.user = payload.user
         console.log(`inside the user: ${req.user} authorize middleware`)
-        //console.log(req.userId)
-        //console.log(req.user)
+       
         next()
 
     } catch (error) {

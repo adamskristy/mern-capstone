@@ -2,17 +2,9 @@ const User = require('../models/User')
 
 // GET specific user info
 const info = async (req, res) => {
-    // req.params.username
-    // req.userId
-    //console.log('made it to our route!')
-    //console.log('user id:', req.userId)
-
-    //console.log(req.header("Authorization"))
 
     try {
-        // const foundUser = await User.findById(req.userId)
-        const foundUser = await User.findOne({ username: req.params.username})
-
+        const foundUser = await User.findById(req.userId)
         res.status(200).json({ 
             username: foundUser.username, 
             email: foundUser.email 

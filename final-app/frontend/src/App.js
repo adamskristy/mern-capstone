@@ -23,9 +23,15 @@ function App() {
     const [user, setUser] = useState({})
     const [isLoading, setIsLoading] = useState(true)
 
-    const currentUserInfo = async (token) => {
+    
+
+    const currentUserInfo = async () => {
+        
         try {
   
+            let token = localStorage.getItem('token')
+          
+
             const info = await axios.get('http://localhost:8080/user/info/:username', {
                 headers: {
                     'Authorization': ` Bearer ${token}`
@@ -33,6 +39,7 @@ function App() {
             })
   
             const { username, email } = info.data
+          
             setUser({ username, email })
             
         } catch (error) {
@@ -43,7 +50,7 @@ function App() {
                 localStorage.removeItem('token')
             }
             
-            //console.log(message)
+            
   
         } finally {
             setIsLoading(false)
@@ -70,6 +77,7 @@ function App() {
 
   if (!isLoading) {
     if (loggedIn) {
+
         routes = (
             <Routes>
                 <Route path="/" element={<Home user={user.username} />} />

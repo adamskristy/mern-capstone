@@ -72,9 +72,10 @@ const remove = async (req, res) => {
 // UPDATE
 
 const updateRating = async (req, res) => {
+    console.log(1)
     const { id } = req.params
     try {
-        const rating = await Rating.findOne({ _id: id }, {
+        const rating = await Rating.findByIdAndUpdate({ _id: id }, {
             ...req.body
         })
         if (rating.user !== req.user) {

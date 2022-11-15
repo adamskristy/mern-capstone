@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 
-function RatingForm({ user }) { //need to pass {user}
+function RatingForm({ user }) { 
 
     const navigate = useNavigate()
 
@@ -21,10 +21,10 @@ function RatingForm({ user }) { //need to pass {user}
 
 
 
-    //console.log(formData)
+    
 
     function handleChange(event) {
-        //console.log(event)
+        
         const { name, value, type, checked } = event.target
         setFormData(prevFormData => { //multiple input so we care about previous state
             return {
@@ -65,7 +65,7 @@ function RatingForm({ user }) { //need to pass {user}
 
         } catch (error) {
             setError(error.response.data.error)
-            //console.log(error.response.data.error)
+            
         }
     }
 

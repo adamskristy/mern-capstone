@@ -11,7 +11,7 @@ function Edit({ user }) {
 
     const navigate = useNavigate()
 
-    const { ratings, dispatch } = useRatingsContext()
+    const { dispatch } = useRatingsContext()
     //console.log(ratings)
 
     const [formData, setFormData] = useState(
@@ -66,8 +66,8 @@ function Edit({ user }) {
       
 
         try {
-            const ratingId = ratings._id
-            const response = await axios.patch(`http://localhost:8080/${ratingId}/edit`, formData, {
+            
+            const response = await axios.patch(`http://localhost:8080/${id}/edit`, formData, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -78,7 +78,7 @@ function Edit({ user }) {
             console.log('Submission successful')
             //console.log(response)
 
-            //setFormData({})
+            
             navigate('/profile')
 
         } catch (error) {
@@ -95,24 +95,24 @@ function Edit({ user }) {
                 <label>Cost:</label>
                 <input
                     type="radio"
-                    id="free"
-                    name="cost"
-                    value={formData.cost}
-                    //checked={formData.cost === "free"}
-                    onChange={handleChange}
+                    id="Free"
+                    name="Cost"
+                    value="Free"
+                    checked={formData.cost === "Free"}
+                    onChange={(e) => setFormData({...formData, cost: e.target.value})}
+                    //setting value to "Free" so it updates
                 />
-                <label htmlFor="free">Free</label>
+                <label htmlFor="Free">Free</label>
                 <input
                     type="radio"
-                    id="paid"
-                    name="cost"
-                    value={formData.cost}
-                    checked={formData.cost === "paid"}
-                    onChange={handleChange}
+                    id="Paid"
+                    name="Cost"
+                    value="Paid"
+                    checked={formData.cost === "Paid"}
+                    onChange={(e) => setFormData({...formData, cost: e.target.value})}
                 />
-                <label htmlFor="paid">Paid</label>
+                <label htmlFor="Paid">Paid</label>
                 <br />
-
                 <label htmlFor='type'>Type: </label>
                 <select
                     id="type"
@@ -121,9 +121,9 @@ function Edit({ user }) {
                     onChange={handleChange}
                 >
                     <option value="">Select</option>
-                    <option value="video">Video</option>
-                    <option value="article">Article</option>
-                    <option value="other">Other</option>
+                    <option value="Video">Video</option>
+                    <option value="Article">Article</option>
+                    <option value="Other">Other</option>
                 </select>
                 <br />
 
