@@ -1,6 +1,8 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import  formatDistanceToNow  from "date-fns/formatDistanceToNow";
+
 function RatingDetails({ rating }) {
 
 
@@ -11,7 +13,7 @@ function RatingDetails({ rating }) {
         try {
             //console.log(rating)
             const ratingId = rating._id
-            
+
             //console.log(ratingId)
             const response = await axios.delete(`http://localhost:8080/${ratingId}/remove`, {
                 headers: {
@@ -21,7 +23,8 @@ function RatingDetails({ rating }) {
 
             console.log(response)
             console.log('successfully deleted')
-            alert("Rating Deleted")
+
+            // alert("Rating Deleted")
         } catch (error) {
             console.log(error)
             alert(error.response.data.error)
@@ -40,9 +43,9 @@ function RatingDetails({ rating }) {
             <p>{rating.cost}</p>
             <p>{rating.type}</p>
             <p>{rating.platform}</p>
-            <a href={rating.link}><p>Check it out</p></a>
             <p>{rating.notes}</p>
-            <p>Submitted: {rating.createdAt}</p>
+            <a href={rating.link}><p>Check it out</p></a>
+            <p>Submitted: {formatDistanceToNow(new Date(rating.createdAt), { addSuffix: true })}</p>
         </div>
     );
 }

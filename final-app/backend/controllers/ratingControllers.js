@@ -35,7 +35,7 @@ const createRating = async (req, res) => {
         res.status(200).json(rating)
         console.log(rating)
     } catch (error) {
-        res.status(400).json({ error: error.message })
+        res.status(400).json({ error: 'Unable to submit. Please complete all fields' })
     }
 }
 

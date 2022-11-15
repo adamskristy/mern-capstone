@@ -78,22 +78,22 @@ function RatingForm({ user }) { //need to pass {user}
                 <label>Cost:</label>
                 <input
                     type="radio"
-                    id="free"
+                    id="Free"
                     name="cost"
-                    value="free"
-                    checked={formData.cost === "free"}
+                    value="Free"
+                    checked={formData.cost === "Free"}
                     onChange={handleChange}
                 />
-                <label htmlFor="free">Free</label>
+                <label htmlFor="Free">Free</label>
                 <input
                     type="radio"
-                    id="paid"
+                    id="Paid"
                     name="cost"
-                    value="paid"
-                    checked={formData.cost === "paid"}
+                    value="Paid"
+                    checked={formData.cost === "Paid"}
                     onChange={handleChange}
                 />
-                <label htmlFor="paid">Paid</label>
+                <label htmlFor="Paid">Paid</label>
                 <br />
 
                 <label htmlFor='type'>Type: </label>
@@ -104,9 +104,9 @@ function RatingForm({ user }) { //need to pass {user}
                     onChange={handleChange}
                 >
                     <option value="">Select</option>
-                    <option value="video">Video</option>
-                    <option value="article">Article</option>
-                    <option value="other">Other</option>
+                    <option value="Video">Video</option>
+                    <option value="Article">Article</option>
+                    <option value="Other">Other</option>
                 </select>
                 <br />
 
