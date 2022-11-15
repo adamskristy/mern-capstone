@@ -1,7 +1,7 @@
-/* google font */
+/* 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
 
-/* layout */
+
 body {
   outline: 1px solid green;
   background: #f1f1f1;
@@ -30,7 +30,7 @@ header a {
   margin: 0 auto;
 }
 
-/* homepage */
+
 .home {
   outline: 1px solid blue;
   display: grid;
@@ -80,4 +80,4 @@ header a {
   color: #e7195a;
   border-radius: 4px;
   margin: 20px 0;
-}
+} */
