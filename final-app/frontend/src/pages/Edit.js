@@ -1,11 +1,18 @@
 import axios from "axios";
-import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { useNavigate, useParams } from "react-router-dom";
+
+import { useRatingsContext } from "../hooks/useRatingsContext";
 
 
-function Edit({ user, rating }) {
-   
+function Edit({ user }) {
+
+    const { id } = useParams()
+
     const navigate = useNavigate()
+
+    const { ratings, dispatch } = useRatingsContext()
+    //console.log(ratings)
 
     const [formData, setFormData] = useState(
         {
@@ -18,6 +25,27 @@ function Edit({ user, rating }) {
         }
     )
     //console.log(formData)
+
+    useEffect(() => {
+        const getRating = async () => {
+            let token = localStorage.getItem("token")
+            try {
+                const response = await axios.get(`http://localhost:8080/${id}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+
+                dispatch({ type: 'FIND_RATING', payload: response.data })
+                //console.log(response.data)
+                setFormData(response.data)
+            } catch (error) {
+                console.log(error.response.data)
+            }
+        }
+        getRating()
+    }, [dispatch])
+
 
     function handleChange(event) {
         //console.log(event)
@@ -35,29 +63,23 @@ function Edit({ user, rating }) {
 
         let token = localStorage.getItem("token")
         console.log(user)
-        let newRating = {
-            cost: formData.cost,
-            type: formData.type,
-            platform: formData.platform,
-            link: formData.link,
-            title: formData.title,
-            notes: formData.notes,
-            user
-        }
+      
 
         try {
-            const ratingId = rating._id
-            const response = await axios.patch(`http://localhost:8080/${ratingId}`, newRating, {
+            const ratingId = ratings._id
+            const response = await axios.patch(`http://localhost:8080/${ratingId}/edit`, formData, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             })
 
-            console.log('Submission successful')
-            console.log(response)
+            dispatch({ type: 'UPDATE_RATING', payload: response })
 
-            setFormData({})
-            navigate('/')
+            console.log('Submission successful')
+            //console.log(response)
+
+            //setFormData({})
+            navigate('/profile')
 
         } catch (error) {
             console.log(error.response.data.error)
@@ -75,8 +97,8 @@ function Edit({ user, rating }) {
                     type="radio"
                     id="free"
                     name="cost"
-                    value="free"
-                    checked={formData.cost === "free"}
+                    value={formData.cost}
+                    //checked={formData.cost === "free"}
                     onChange={handleChange}
                 />
                 <label htmlFor="free">Free</label>
@@ -84,7 +106,7 @@ function Edit({ user, rating }) {
                     type="radio"
                     id="paid"
                     name="cost"
-                    value="paid"
+                    value={formData.cost}
                     checked={formData.cost === "paid"}
                     onChange={handleChange}
                 />

@@ -19,7 +19,7 @@ const getRating = async (req, res) => {
         const rating = await Rating.findById(id)
         res.status(200).json(rating)
     } catch (error) {
-        return res.status(404).json({ error: "Item not found" })
+        return res.status(404).json({ error: error.message })
     }
 }
 

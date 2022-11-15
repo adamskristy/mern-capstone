@@ -32,7 +32,7 @@ router.post('/', createRating)
 // router.delete('/:id', deleteRating)
 
 // UPDATE a rating
-router.patch('/:id', updateRating)
+router.patch('/:id/edit', updateRating)
 
 /////////////////////////////
 

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Navigate, Routes, Route } from "react-router-dom";
 
 
+
 import './App.css';
 
 import Home from "./pages/Home";
@@ -82,7 +83,7 @@ function App() {
                     }
                 />
                 <Route path='/add' element={<Add user={user.username} />} />
-                <Route path='/edit' element={<Edit user={user.username} />} />
+                <Route path='/edit/:id' element={<Edit user={user.username} />} /> {/* need to setup params first to access later */}
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         )

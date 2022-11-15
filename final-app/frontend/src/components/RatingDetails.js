@@ -1,10 +1,12 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-import  formatDistanceToNow  from "date-fns/formatDistanceToNow";
+import { useRatingsContext } from "../hooks/useRatingsContext";
+
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 function RatingDetails({ rating }) {
-
+    const { dispatch } = useRatingsContext()
 
     const handleDelete = async () => {
 
@@ -12,14 +14,14 @@ function RatingDetails({ rating }) {
 
         try {
             //console.log(rating)
-            const ratingId = rating._id
-
-            //console.log(ratingId)
-            const response = await axios.delete(`http://localhost:8080/${ratingId}/remove`, {
+            
+            const response = await axios.delete(`http://localhost:8080/${rating._id}/remove`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             })
+
+            dispatch({ type: 'DELETE_RATING', payload: response.data })
 
             console.log(response)
             console.log('successfully deleted')
@@ -31,13 +33,11 @@ function RatingDetails({ rating }) {
         }
     }
 
-
-
     return (
         <div className="rating-details">
             <div className="ratings-details-btns">
                 <button onClick={handleDelete}>Delete</button>
-                <Link to='/edit' rating={rating}><button>Edit</button></Link>
+                <Link to={`/edit/${rating._id}`} rating={rating}><button>Edit</button></Link> {/* need to setup params first to access later */}
             </div>
             <h3>{rating.title}</h3>
             <p>{rating.cost}</p>

@@ -9,11 +9,11 @@ import { RatingContextProvider } from "./context/RatingContext";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RatingContextProvider>
     <BrowserRouter>
-      <App />
+      <RatingContextProvider>
+        <App />
+      </RatingContextProvider>
     </BrowserRouter>
-    </RatingContextProvider>
   </React.StrictMode>
 );
 
