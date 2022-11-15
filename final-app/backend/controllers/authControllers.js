@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 
 const createToken = (payload) => {
-    return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' })
+    return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '10d' })
 }
 
 // REGISTER USER

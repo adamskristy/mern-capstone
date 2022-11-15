@@ -11,10 +11,11 @@ const {
     createRating,
     getRating,
     getAllRatings,
-    deleteRating,
+    // deleteRating,
     updateRating,
     profileRatings,
-    add  
+    add,
+    remove  
 } = require('../controllers/ratingControllers')
 
 
@@ -24,21 +25,23 @@ router.get('/', getAllRatings)
 // GET single rating
 router.get('/:id', getRating )
 
-// CREATE / POST a new rating //
+// CREATE / POST a new rating 
 router.post('/', createRating)
 
-// DELETE a rating
-router.delete('/:id', deleteRating)
+// // DELETE a rating
+// router.delete('/:id', deleteRating)
 
 // UPDATE a rating
 router.patch('/:id', updateRating)
 
 /////////////////////////////
 
-// GET profile rating
-router.get('/:user/index', profileRatings)
+// GET specific ratings by user
+router.get('/:username/index', profileRatings)
 
-// CREATE rating for specific user // fix this !!
+// add ---> in use ??
 router.post('/add', add)
+
+router.delete('/:id/remove', remove)
 
 module.exports = router

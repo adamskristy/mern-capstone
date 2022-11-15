@@ -1,20 +1,41 @@
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-function RatingDetails ({rating}) {
-    
-    const handleClick = async () => {
+function RatingDetails({ rating }) {
+
+
+    const handleDelete = async () => {
+
+        let token = localStorage.getItem("token")
+
         try {
-            const response = await axios.delete(`http://localhost:8080${rating._id}`)
+            //console.log(rating)
+            const ratingId = rating._id
+            
+            //console.log(ratingId)
+            const response = await axios.delete(`http://localhost:8080/${ratingId}/remove`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+
+            console.log(response)
             console.log('successfully deleted')
-        }catch (error){
-            console.log(error) 
+            alert("Rating Deleted")
+        } catch (error) {
+            console.log(error)
+            alert(error.response.data.error)
         }
     }
 
-    return ( 
+
+
+    return (
         <div className="rating-details">
-            <button onClick={handleClick}>Delete</button>
-            {/* <span onClick={handleClick}>Delete</span> */}
+            <div className="ratings-details-btns">
+                <button onClick={handleDelete}>Delete</button>
+                <Link to='/edit' rating={rating}><button>Edit</button></Link>
+            </div>
             <h3>{rating.title}</h3>
             <p>{rating.cost}</p>
             <p>{rating.type}</p>
@@ -23,7 +44,7 @@ function RatingDetails ({rating}) {
             <p>{rating.notes}</p>
             <p>Submitted: {rating.createdAt}</p>
         </div>
-     );
+    );
 }
 
-export default RatingDetails ;
+export default RatingDetails;

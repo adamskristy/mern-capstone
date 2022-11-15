@@ -1,6 +1,7 @@
 const Rating = require('../models/Rating')
+const User = require('../models/User')
 
-// GET all ratings
+// GET all ratings (home page)
 const getAllRatings = async (req, res) => {
     try {
         const ratings = await Rating.find({}).sort({ createdAt: -1 })
@@ -9,7 +10,6 @@ const getAllRatings = async (req, res) => {
         res.status(400).json({ error: error.message })
     }
 }
-
 
 //GET single rating
 const getRating = async (req, res) => {
@@ -25,11 +25,13 @@ const getRating = async (req, res) => {
 
 // CREATE a new rating
 const createRating = async (req, res) => {
-    const userId = req.userId
-    const { cost, type, platform, link, title, notes } = req.body
-    
+    const { cost, type, platform, link, title, notes, user } = req.body
+    //console.log(user)
+    //console.log(req.user)
+    //console.log(req.body)
+
     try {
-        const rating = await Rating.create({ cost, type, platform, title, link, notes, userId })
+        const rating = await Rating.create({ cost, type, platform, title, link, notes, user })
         res.status(200).json(rating)
         console.log(rating)
     } catch (error) {
@@ -37,16 +39,34 @@ const createRating = async (req, res) => {
     }
 }
 
-// DELETE a rating
-const deleteRating = async (req, res) => {
-    const { id } = req.params
+// // DELETE a rating
+// const deleteRating = async (req, res) => {
+//     const { id } = req.params
+//     try {
+//         const rating = await Rating.findOneAndDelete({_id: id})
+//         res.status(200).json(rating)
+//     } catch (error) {
+//         res.status(400).json({ error: error.message })
+//     }
+// }
 
+// DELETE rating made by user only
+const remove = async (req, res) => {
+    const { id } = req.params
     try {
-        const rating = await Rating.findOneAndDelete({ _id: id })
-        res.status(200).json(rating)
+        //console.log(req.user)
+        const rating = await Rating.findOne({ _id: id })
+        //console.log(rating.user)
+        if (rating.user !== req.user) {
+            res.status(401).json({ error: 'Not authorized to delete' })
+        } else {
+            const rating = await Rating.findOneAndDelete({ _id: id })
+            res.status(200).json(rating)
+        }
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
+
 }
 
 // UPDATE
@@ -54,26 +74,31 @@ const deleteRating = async (req, res) => {
 const updateRating = async (req, res) => {
     const { id } = req.params
     try {
-        const rating = await Rating.findByIdAndUpdate({ _id: id }, {
+        const rating = await Rating.findOne({ _id: id }, {
             ...req.body
         })
-        res.status(200).json(rating)
+        if (rating.user !== req.user) {
+            res.status(401).json({ error: 'Not authorized to change' })
+        } else {
+            res.status(200).json(rating)
+        }
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
 }
+
 
 // Get ratings for current user (profile page)
 const profileRatings = async (req, res) => {
     try {
-        const foundCurrentUsersRating = await Rating.find({ user: req.user })
-        res.status(200).json({ rating: foundCurrentUsersRating })
+        const foundCurrentUsersRatings = await Rating.find({ user: req.user }).sort({ createdAt: -1 })
+        res.status(200).json({ rating: foundCurrentUsersRatings })
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
 }
 
-//create ratings for current user
+//(add page)
 const add = async (req, res) => {
     try {
         const createdRatingForCurrentUser = await Rating.create(req.body)
@@ -87,8 +112,9 @@ module.exports = {
     createRating,
     getRating,
     getAllRatings,
-    deleteRating,
+    // deleteRating,
     updateRating,
     profileRatings,
-    add
+    add,
+    remove
 }

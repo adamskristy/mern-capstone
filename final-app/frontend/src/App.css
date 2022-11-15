@@ -66,8 +66,8 @@ header a {
   color: #333;
 }
 
-.rating-details button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+.ratings-details-btns {
+  outline: 1px solid brown;
+  display: flex;
+  justify-content: space-between;
 }

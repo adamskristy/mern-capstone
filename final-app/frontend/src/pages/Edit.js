@@ -3,11 +3,10 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 
-function RatingForm({ user }) { //need to pass {user}
-
+function Edit({ user, rating }) {
+   
     const navigate = useNavigate()
 
-    const [error, setError] = useState(null)
     const [formData, setFormData] = useState(
         {
             cost: "",
@@ -18,9 +17,6 @@ function RatingForm({ user }) { //need to pass {user}
             notes: ""
         }
     )
-
-
-
     //console.log(formData)
 
     function handleChange(event) {
@@ -50,7 +46,8 @@ function RatingForm({ user }) { //need to pass {user}
         }
 
         try {
-            const response = await axios.post('http://localhost:8080/', newRating, {
+            const ratingId = rating._id
+            const response = await axios.patch(`http://localhost:8080/${ratingId}`, newRating, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -61,11 +58,9 @@ function RatingForm({ user }) { //need to pass {user}
 
             setFormData({})
             navigate('/')
-            setError(null)
 
         } catch (error) {
-            setError(error.response.data.error)
-            //console.log(error.response.data.error)
+            console.log(error.response.data.error)
         }
     }
 
@@ -73,7 +68,7 @@ function RatingForm({ user }) { //need to pass {user}
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <h3>Submit a Rating</h3>
+                <h3>Edit Your Rating</h3>
 
                 <label>Cost:</label>
                 <input
@@ -151,15 +146,10 @@ function RatingForm({ user }) { //need to pass {user}
                 />
                 <br />
                 <button>Submit</button>
-                {error && <div className="error">{error}</div>}
             </form>
 
         </div>
     );
 }
 
-export default RatingForm;
-
-
-
-
+export default Edit;

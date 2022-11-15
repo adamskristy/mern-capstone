@@ -37,9 +37,3 @@ function Ratings () {
 
 export default Ratings ;
 
-// useEffect(() => {
-//     axios.get('http://localhost:8080/rate-my-tutorial').then((data) => {
-//         console.log(data);
-//         setWorkouts(data?.data);
-//     });
-// }, []);

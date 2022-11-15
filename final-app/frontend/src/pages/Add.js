@@ -4,7 +4,7 @@ function Add({ user }) {
     return (
         <div>
             <h1>Submit a New Rating</h1>
-            <RatingForm user={user.username} />
+            <RatingForm user={user} />
         </div>
     );
 }

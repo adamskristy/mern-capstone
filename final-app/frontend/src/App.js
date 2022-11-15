@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Navigate, Routes, Route } from "react-router-dom";
 
+
 import './App.css';
 
 import Home from "./pages/Home";
@@ -9,8 +10,10 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import Add from "./pages/Add";
+import Edit from "./pages/Edit";
 
 import Navbar from "./components/Navbar";
+
 
 let initialRender = true
 
@@ -39,7 +42,7 @@ function App() {
                 localStorage.removeItem('token')
             }
             
-            console.log(message)
+            //console.log(message)
   
         } finally {
             setIsLoading(false)
@@ -79,6 +82,7 @@ function App() {
                     }
                 />
                 <Route path='/add' element={<Add user={user.username} />} />
+                <Route path='/edit' element={<Edit user={user.username} />} />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         )
