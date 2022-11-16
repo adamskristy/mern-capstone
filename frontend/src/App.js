@@ -92,7 +92,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login setUser={setUser} />} />
                 <Route path="/register" element={<Register setUser={setUser} />} />
-                <Route path="*" element={<Navigate to="/home" />} />
+                <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           )
         }

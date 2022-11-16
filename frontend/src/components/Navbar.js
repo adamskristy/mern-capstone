@@ -24,7 +24,7 @@ function Navbar({ user, setUser }) {
                                 <p className="control">
                                     <Link to='/profile' className="button is-white mr-6"><span>Profile</span></Link>
                                 </p>
-                                <Link onClick={logout} className="button">Logout</Link>
+                                <button className="button" onClick={logout}>Logout</button>
                             </div>
                         </div>
                     </div>

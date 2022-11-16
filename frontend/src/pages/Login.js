@@ -28,7 +28,7 @@ function Login({ setUser }) {
 
             console.log(response, info)
 
-            
+
             setUser(info.data)
             alert('Login Successful')
 
@@ -40,31 +40,39 @@ function Login({ setUser }) {
     }
 
     return (
-        <div>
-            <h1>Login</h1>
+        <div className="form container p-6">
+        <div className="box">
+            <h1 className="title">Login</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username:</label>
-                <br />
-                <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    onChange={handleChange}
-                    value={form.username}
-                />
-                <br /><br />
-                <label htmlFor="password">Password:</label>
-                <br />
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    onChange={handleChange}
-                    value={form.password}
-                />
-                <br /><br />
-                <button>Submit</button>
+                <div className="field">
+                    <label htmlFor="username" className="label">Username:</label>
+                    <div className="control">
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            onChange={handleChange}
+                            value={form.username}
+                            className="input"
+                        />
+                    </div>
+                </div>
+                <div className="field">
+                    <label htmlFor="password" className="label">Password:</label>
+                    <div className="control">
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            onChange={handleChange}
+                            value={form.password}
+                            className="input"
+                        />
+                    </div>
+                </div>
+                <button className="button is-primary">Submit</button>
             </form>
+        </div>
         </div>
     );
 }

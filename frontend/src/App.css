@@ -81,3 +81,8 @@ header a {
   border-radius: 4px;
   margin: 20px 0;
 } */
+
+.form {
+  width: 600px;
+  padding: 20px;
+}

@@ -35,42 +35,48 @@ function Register({ setUser }) {
 
 
     return (
-        <>
-            <h1>Register</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username:</label>
-                <br />
-                <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    onChange={handleChange}
-                    value={form.username}
-                />
-                <br /><br />
-                <label htmlFor="email">Email:</label>
-                <br />
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    onChange={handleChange}
-                    value={form.email}
-                />
-                <br /><br />
-                <label htmlFor="password">Password:</label>
-                <br />
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    onChange={handleChange}
-                    value={form.password}
-                />
-                <br /><br />
-                <button>Submit</button>
-            </form>
-        </>
+        <div className="form container p-6">
+            <div className="box">
+                <h1 className="title">Sign Up</h1>
+
+                <form onSubmit={handleSubmit}>
+                    <div className="field">
+                        <label htmlFor="username" className="label">Username:</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            onChange={handleChange}
+                            value={form.username}
+                            className="input"
+                        />
+                    </div>
+                    <div className="field">
+                        <label htmlFor="email" className="label">Email:</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            onChange={handleChange}
+                            value={form.email}
+                            className="input"
+                        />
+                    </div>
+                    <label htmlFor="password" className="label">Password:</label>
+                    <div className="field">
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            onChange={handleChange}
+                            value={form.password}
+                            className="input"
+                        />
+                    </div>
+                    <button className="button is-primary">Submit</button>
+                </form>
+            </div>
+        </div>
     );
 }
 
