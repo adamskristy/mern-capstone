@@ -19,7 +19,7 @@ function Navbar({ user, setUser }) {
                         <div className="navbar-item">
                             <div className="field is-grouped">
                                 <p className="control">
-                                    <Link to='/profile' className="button is-white mr-6"><h1>Profile</h1></Link>
+                                    <Link to='/profile' className="button is-white mr-6"><span>Profile</span></Link>
                                 </p>
                                 <Link onClick={logout} className="button">Logout</Link>
                             </div>
@@ -39,7 +39,7 @@ function Navbar({ user, setUser }) {
                     <div className="navbar-item">
                         <div className="field is-grouped">
                             <p className="control">
-                                <Link to='/login'className="button is-light" ><h1>Login</h1></Link>
+                                <Link to='/login'className="button is-light" ><span>Login</span></Link>
                             </p>
                             <Link to='/register' className="button is-primary"><h1>Sign Up</h1></Link>
                         </div>
