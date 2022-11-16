@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navbar({ user, setUser }) {
+
+    const navigate = useNavigate()
 
     const logout = () => {
         setUser({})
         localStorage.removeItem("token")
         console.log('Logging out')
+        navigate('/')
     }
 
     if (user) {
@@ -13,7 +16,7 @@ function Navbar({ user, setUser }) {
             <header>
                 <div className="navbar">
                     <div className="navbar-brand">
-                        <Link to='/' className="title is-1"><h1>Rate My Tutorial</h1></Link>
+                        <Link to='/main' className="title is-1"><h1>Rate My Tutorial</h1></Link>
                     </div>
                     <div className="navbar-end">
                         <div className="navbar-item">
@@ -33,7 +36,7 @@ function Navbar({ user, setUser }) {
             <header>
             <div className="navbar">
                 <div className="navbar-brand">
-                    <h1 className="title is-1">Rate My Tutorial</h1>
+                <Link to='/' className="title is-1"><h1>Rate My Tutorial</h1></Link>
                 </div>
                 <div className="navbar-end">
                     <div className="navbar-item">
@@ -52,3 +55,5 @@ function Navbar({ user, setUser }) {
 }
 
 export default Navbar;
+
+

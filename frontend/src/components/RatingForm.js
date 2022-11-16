@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
+import ratingService from '../services/ratingService'
 
 function RatingForm({ user }) { 
 
@@ -19,10 +19,6 @@ function RatingForm({ user }) {
         }
     )
 
-
-
-    
-
     function handleChange(event) {
         
         const { name, value, type, checked } = event.target
@@ -37,8 +33,8 @@ function RatingForm({ user }) {
     const handleSubmit = async (event) => {
         event.preventDefault()
 
-        let token = localStorage.getItem("token")
-        console.log(user)
+    
+        //console.log(user)
         let newRating = {
             cost: formData.cost,
             type: formData.type,
@@ -50,11 +46,7 @@ function RatingForm({ user }) {
         }
 
         try {
-            const response = await axios.post('http://localhost:8080/', newRating, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            })
+            const response = await ratingService.add(newRating)
 
             console.log('Submission successful')
             console.log(response)

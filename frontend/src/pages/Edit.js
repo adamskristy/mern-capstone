@@ -48,7 +48,7 @@ function Edit({ user }) {
 
     useEffect(() => {
         getRating(id)
-    }, [dispatch])
+    }, [])
 
 
     function handleChange(event) {

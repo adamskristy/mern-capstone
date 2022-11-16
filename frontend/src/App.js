@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import './App.css';
 
 import Home from "./pages/Home";
+import Main from "./pages/Main";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
@@ -69,7 +70,8 @@ function App() {
 
         routes = (
             <Routes>
-                <Route path="/" element={<Home user={user.username} />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/main" element={<Main user={user.username} />} />
                 <Route
                     path="/profile"
                     element={
@@ -81,15 +83,16 @@ function App() {
                 />
                 <Route path='/add' element={<Add user={user.username} />} />
                 <Route path='/edit/:id' element={<Edit user={user.username} />} /> {/* need to setup params first to access later */}
-                <Route path="*" element={<Navigate to="/" />} />
+                <Route path="*" element={<Navigate to="/main" />} />
             </Routes>
         )
     } else {
         routes = (
             <Routes>
+                <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login setUser={setUser} />} />
                 <Route path="/register" element={<Register setUser={setUser} />} />
-                <Route path="*" element={<Navigate to="/login" />} />
+                <Route path="*" element={<Navigate to="/home" />} />
             </Routes>
           )
         }

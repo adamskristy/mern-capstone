@@ -8,7 +8,7 @@ const getToken = () => {
 }
 
 const axiosRatings = () => axios.create({
-    baseURL: baseURL,
+    baseURL: baseURL + '/ratings',
     headers: {
         'Authorization': `Bearer ${getToken()}`
     }
