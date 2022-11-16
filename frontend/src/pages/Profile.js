@@ -1,8 +1,9 @@
-import axios from "axios"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import RatingDetails from "../components/RatingDetails";
+
+import ratingService from '../services/ratingService'
 
 function Profile({ username, email }) {
     const navigate = useNavigate()
@@ -10,17 +11,10 @@ function Profile({ username, email }) {
 
     const getUserRatings = async () => {
 
-        let token = localStorage.getItem("token")
-
         try {
-            const response = await axios.get(`http://localhost:8080/${username}/index`,{
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            })
+            const response = await ratingService.index()
 
             setRatings(response.data.rating)
-
 
         } catch (error) {
             console.log(error)

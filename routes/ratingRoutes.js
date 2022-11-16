@@ -34,8 +34,6 @@ router.post('/', createRating)
 // UPDATE a rating
 router.patch('/:id/edit', updateRating)
 
-/////////////////////////////
-
 // GET specific ratings by user
 router.get('/:username/index', profileRatings)
 

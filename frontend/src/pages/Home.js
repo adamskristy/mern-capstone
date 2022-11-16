@@ -1,9 +1,10 @@
-import axios from "axios"
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRatingsContext } from "../hooks/useRatingsContext";
 
 import RatingDetails from "../components/RatingDetails";
+
+import ratingService from '../services/ratingService'
 
 function Ratings() {
     const navigate = useNavigate()
@@ -14,14 +15,8 @@ function Ratings() {
     useEffect(() => {
         const getAllRatings = async () => {
 
-            let token = localStorage.getItem("token")
-
             try {
-                const response = await axios.get('http://localhost:8080', {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                })
+                const response = await ratingService.all()
 
                 dispatch({ type: 'SET_RATINGS', payload: response.data })
             

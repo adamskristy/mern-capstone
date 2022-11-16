@@ -1,25 +1,21 @@
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 import { useRatingsContext } from "../hooks/useRatingsContext";
 
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
+import ratingService from '../services/ratingService'
+
 function RatingDetails({ rating }) {
     const { dispatch } = useRatingsContext()
 
     const handleDelete = async () => {
 
-        let token = localStorage.getItem("token")
 
         try {
             //console.log(rating)
             
-            const response = await axios.delete(`http://localhost:8080/${rating._id}/remove`, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            })
+            const response = await ratingService.remove(rating._id)
 
             dispatch({ type: 'DELETE_RATING', payload: response.data })
 

@@ -1,10 +1,9 @@
-import axios from "axios";
 import { useState } from "react";
 
+import authService from '../services/authService'
+import userService from '../services/userService'
 
 function Register({ setUser }) {
-
-
 
     let [form, setForm] = useState({
         username: '',
@@ -20,15 +19,12 @@ function Register({ setUser }) {
         e.preventDefault()
         try {
 
-            const response = await axios.post('http://localhost:8080/auth/register', form)
-
-            const info = await axios.get('http://localhost:8080/user/info/' + form.username, {
-                headers: {
-                    'Authorization': ` Bearer ${response.data.token}`
-                }
-            })
+            const response = await authService.register(form)
 
             localStorage.setItem("token", response.data.token)
+
+            const info = await userService.info()
+
             setUser(info.data)
             alert('Registered')
 

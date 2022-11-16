@@ -1,5 +1,7 @@
-import axios from 'axios'
 import { useState } from "react";
+
+import authService from '../services/authService'
+import userService from '../services/userService'
 
 
 function Login({ setUser }) {
@@ -18,17 +20,15 @@ function Login({ setUser }) {
 
         try {
 
-            const response = await axios.post('http://localhost:8080/auth/login', form)
+            const response = await authService.login(form)
 
-            const info = await axios.get('http://localhost:8080/user/info/' + form.username, {
-                headers: {
-                    'Authorization': `Bearer ${response.data.token}`
-                }
-            })
+            localStorage.setItem("token", response.data.token)
+
+            const info = await userService.info()
 
             console.log(response, info)
 
-            localStorage.setItem("token", response.data.token)
+            
             setUser(info.data)
             alert('Login Successful')
 

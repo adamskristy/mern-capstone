@@ -1,8 +1,7 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
 import { Navigate, Routes, Route } from "react-router-dom";
 
-
+import Navbar from "./components/Navbar";
 
 import './App.css';
 
@@ -13,8 +12,7 @@ import Profile from "./pages/Profile";
 import Add from "./pages/Add";
 import Edit from "./pages/Edit";
 
-import Navbar from "./components/Navbar";
-
+import userService from './services/userService'
 
 let initialRender = true
 
@@ -23,20 +21,11 @@ function App() {
     const [user, setUser] = useState({})
     const [isLoading, setIsLoading] = useState(true)
 
-    
-
     const currentUserInfo = async () => {
         
         try {
-  
-            let token = localStorage.getItem('token')
-          
-
-            const info = await axios.get('http://localhost:8080/user/info/:username', {
-                headers: {
-                    'Authorization': ` Bearer ${token}`
-                }
-            })
+         
+            const info = await userService.info()
   
             const { username, email } = info.data
           
