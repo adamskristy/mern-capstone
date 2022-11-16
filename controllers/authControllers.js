@@ -61,8 +61,13 @@ const login = async (req, res) => {
     }
 }
 
+const test = (req, res) => {
+    res.send("hello")
+  }
+
 
 module.exports = {
     register,
-    login
+    login,
+    test
 }
