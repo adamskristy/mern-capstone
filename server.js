@@ -21,7 +21,7 @@ app.use(express.json())
 
 // Middleware for ROUTES
 app.use('/auth', authRoutes)
-app.use('/', authorize, ratingRoutes)
+app.use('/ratings', authorize, ratingRoutes)
 app.use('/user', authorize, userRoutes)
 
 //listen on port
