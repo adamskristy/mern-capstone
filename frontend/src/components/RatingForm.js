@@ -54,7 +54,7 @@ function RatingForm({ user }) {
             console.log(response)
 
             setFormData({})
-            navigate('/')
+            navigate('/main')
             setError(null)
 
         } catch (error) {

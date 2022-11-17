@@ -18,7 +18,7 @@ function Navbar({ user, setUser }) {
                 <div className="navbar-brand">
                         <div className="navbar-item">
                             <span className="icon is-large">
-                                <span className="icon"><i class="fa-solid fa-coins fa-3x"></i></span>
+                                <span className="icon"><i className="fa-solid fa-bullhorn fa-3x"></i></span>
                             </span>
                         </div>
                         <Link to='/main' className="title is-1"><h1 className="has-text-white has-text-weight-bold">Link Share</h1></Link>
@@ -43,7 +43,7 @@ function Navbar({ user, setUser }) {
                     <div className="navbar-brand">
                         <div className="navbar-item">
                             <span className="icon is-large">
-                                <span className="icon"><i class="fa-solid fa-bullhorn fa-3x"></i></span>
+                                <span className="icon"><i className="fa-solid fa-bullhorn fa-3x"></i></span>
                             </span>
                         </div>
                         <Link to='/' className="title is-1"><h1 className="has-text-white has-text-weight-bold">Link Share</h1></Link>

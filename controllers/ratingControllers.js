@@ -72,15 +72,16 @@ const remove = async (req, res) => {
 // UPDATE
 
 const updateRating = async (req, res) => {
-    console.log(1)
+    //console.log(1)
     const { id } = req.params
     try {
-        const rating = await Rating.findByIdAndUpdate({ _id: id }, {
-            ...req.body
-        })
+        const rating = await Rating.findOne({ _id: id })
         if (rating.user !== req.user) {
             res.status(401).json({ error: 'Not authorized to change' })
         } else {
+            const rating = await Rating.findByIdAndUpdate({ _id: id }, {
+                ...req.body
+            })
             res.status(200).json(rating)
         }
     } catch (error) {

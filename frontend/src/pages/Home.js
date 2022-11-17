@@ -27,7 +27,7 @@ function Home() {
                         <div className="level-item"> <i class="fa-solid fa-hand-fist fa-5x"></i></div>
                     </span>
                     <span className="icon is-large">
-                        <div className="level-item"><i class="fa-solid fa-share fa-5x"></i></div>
+                        <div className="level-item"><i class="fa-solid fa-bullhorn fa-5x"></i></div>
                     </span>
                     <span className="icon is-large">
                         <div className="level-item"><i class="fa-solid fa-earth-americas fa-5x"></i></div>
