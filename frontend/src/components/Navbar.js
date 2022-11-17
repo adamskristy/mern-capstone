@@ -14,7 +14,7 @@ function Navbar({ user, setUser }) {
     if (user) {
         return ( 
             <header>
-                <div className="navbar">
+                <div className="navbar p-3 mb-6">
                     <div className="navbar-brand">
                         <Link to='/main' className="title is-1"><h1>Rate My Tutorial</h1></Link>
                     </div>
@@ -34,7 +34,7 @@ function Navbar({ user, setUser }) {
     } else {
         return (
             <header>
-            <div className="navbar">
+            <div className="navbar p-3 mb-6">
                 <div className="navbar-brand">
                 <Link to='/' className="title is-1"><h1>Rate My Tutorial</h1></Link>
                 </div>

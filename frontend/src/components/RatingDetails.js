@@ -30,18 +30,20 @@ function RatingDetails({ rating }) {
     }
 
     return (
-        <div className="rating-details">
-            <div className="ratings-details-btns">
-                <button onClick={handleDelete}>Delete</button>
-                <Link to={`/edit/${rating._id}`} rating={rating}><button>Edit</button></Link> {/* need to setup params first to access later */}
+        <div className="box details">
+            <div className="ratings-details-btns field is-grouped is-grouped-right buttons are-small">
+                <button onClick={handleDelete} className="button is-danger is-light">Delete</button>
+                <button className="button"><Link to={`/edit/${rating._id}`} rating={rating}>Edit</Link></button> {/* need to setup params first to access later */}
             </div>
-            <h3>{rating.title}</h3>
-            <p>{rating.cost}</p>
+            <div className="block">
+            <h3 className="title is-4">{rating.title}</h3>
+            <p className="is-italic tag is-light">{rating.cost}</p>
             <p>{rating.type}</p>
             <p>{rating.platform}</p>
             <p>{rating.notes}</p>
-            <a href={rating.link}><p>Check it out</p></a>
-            <p>Submitted: {formatDistanceToNow(new Date(rating.createdAt), { addSuffix: true })}</p>
+            <a href={rating.link} className="is-underlined"><p>Check it out</p></a>
+            </div>
+            <p className="is-size-7" >Submitted: {formatDistanceToNow(new Date(rating.createdAt), { addSuffix: true })}</p>
         </div>
     );
 }

@@ -8,7 +8,7 @@ import ratingService from '../services/ratingService'
 
 function Main() {
     const navigate = useNavigate()
-  
+
     const { ratings, dispatch } = useRatingsContext()
 
     const getAllRatings = async () => {
@@ -32,19 +32,19 @@ function Main() {
     }
 
     return (
-        <div className="home">
-
+        <div className="container">
+            <div className="control p-2">
+                <button onClick={handleClick} className="button is-primary">Submit new rating</button>
+            </div>
             <div className="ratings-container">
-                
+
                 {ratings && ratings.map((rating) => {
                     return (
                         <RatingDetails key={rating._id} rating={rating} />
                     )
                 })}
             </div>
-            <div>
-                <button onClick={handleClick}>Submit new rating</button>
-            </div>
+
             {/* need to pass user={user.username} */}
         </div>
     );

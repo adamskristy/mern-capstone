@@ -32,26 +32,26 @@ function Profile({ username, email }) {
 
     const loaded = () => {
         return (
-            <div className="profile">
-                <div className="profile-details">
-                    <h1>Profile</h1>
+            <div className="container p-6">
+                <div className="profile-details block ">
+                    <h1  className="title">Profile</h1>
                     <h3>Account Information</h3>
                     <p>Username: {username}</p>
                     <p>Email: {email}</p>
                 </div>
-        
-                    <button onClick={handleClick}>Submit new rating</button>
-                    
-                
+                <div className="field p-4">
+                    <button onClick={handleClick} className="button is-primary">Submit new rating</button>
+                </div>
+
                 <div className="profile-ratings">
-                
+
                     {ratings && ratings.map((rating) => {
                         return (
                             <RatingDetails key={rating._id} rating={rating} />
                         )
                     })}
 
-                    
+
                 </div>
             </div>
         );
@@ -66,9 +66,9 @@ function Profile({ username, email }) {
                     <p>Username: {username}</p>
                     <p>Email: {email}</p>
                 </div>
-                    <button onClick={handleClick}>Submit new rating</button>
+                <button onClick={handleClick}>Submit new rating</button>
                 <div className="ratings-container">
-                   <h2>No ratings to display...</h2>
+                    <h2>No ratings to display...</h2>
                 </div>
             </div>
         );
