@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Link Share
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##### Project Status: WIP
 
-## Available Scripts
+For this project, you will be making another full CRUD app using the technologies outlined below.
 
-In the project directory, you can run:
+### Minimum Project Requirements
+- A working full-stack application, built by you, using the MERN stack: Node.js, MongoDB/Mongoose, Express and React.
+- At least two models with full CRUD.
+- Follow proper MVC backend structure (models, controllers, routes in separate folders)
+- As many pages and components as you need
+- Include sign up/login (authentication) functionality, with encrypted passwords & an authorization flow
+- Use of axios and local storage for tokens
+- Use of a CSS framework for styling (Bootstrap, MaterialUI, Skeleton, Tailwind, etc.)
+- At least one GitHub commit per day (at least 15)
+- Be deployed online and accessible to the public
+- A README.md file (should include a link to your hosted working website) 
 
-### `npm start`
+### Stretch goals:
+- Manage at least some part of state with the useReducer and useContext hooks (together) or Redux (`npm install @reduxjs/toolkit react-redux`) 
+- Pull from a third party API - either client side with AJAX or server-side with an NPM
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Demo
+https://linkshare-app.netlify.app/
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Motivations
 
-### `npm test`
+I chose this app due to the many hours spent researching, googling, and watching tutorials. I found a lot of great resources, especially articles and blogs, however I know today, most people would prefer to watch a video. I wanted a way to share and expose people to those written resources.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Screenshots
+![App Screenshot](https://i.imgur.com/17h83Fal.png)
 
-### `npm run build`
+## Lessons Learned
+It was really hard to come up with an idea for this project. All the recommendation I found online didnt spark any interest for me. It took a lot of brainstorming and whiteboard in Miro to finally settle on an idea. We were on a deadline as well so I didnt start this project off the way I normally do, which is with some type of plan our outline of what the site should do and how it looks. Because of that I had to redo my code and fix a lot of unecessary mistakes. Once I finally stopped and got my idea together the rest fell in place.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Roadmap
+- filtering by categories
+- like buttons or star ratings
+- comments feature
+- pagination
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Acknowledgements
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ - [Bulma](https://bulma.io/)
+ - [Font Awesome](https://fontawesome.com/)
+ - [The Net Ninja](https://www.youtube.com/c/TheNetNinja)

@@ -12,17 +12,22 @@ function Navbar({ user, setUser }) {
     }
 
     if (user) {
-        return ( 
+        return (
             <header>
-                <div className="navbar p-3 mb-6">
-                    <div className="navbar-brand">
-                        <Link to='/main' className="title is-1"><h1>Rate My Tutorial</h1></Link>
+                <div className="navbar p-3 mb-6 is-primary ">
+                <div className="navbar-brand">
+                        <div className="navbar-item">
+                            <span className="icon is-large">
+                                <span className="icon"><i class="fa-solid fa-coins fa-3x"></i></span>
+                            </span>
+                        </div>
+                        <Link to='/main' className="title is-1"><h1 className="has-text-white has-text-weight-bold">Link Share</h1></Link>
                     </div>
                     <div className="navbar-end">
                         <div className="navbar-item">
                             <div className="field is-grouped">
                                 <p className="control">
-                                    <Link to='/profile' className="button is-white mr-6"><span>Profile</span></Link>
+                                    <Link to='/profile' className="button is-primary mr-6"><span>Profile</span></Link>
                                 </p>
                                 <button className="button" onClick={logout}>Logout</button>
                             </div>
@@ -34,22 +39,27 @@ function Navbar({ user, setUser }) {
     } else {
         return (
             <header>
-            <div className="navbar p-3 mb-6">
-                <div className="navbar-brand">
-                <Link to='/' className="title is-1"><h1>Rate My Tutorial</h1></Link>
-                </div>
-                <div className="navbar-end">
-                    <div className="navbar-item">
-                        <div className="field is-grouped">
-                            <p className="control">
-                                <Link to='/login'className="button is-light" ><span>Login</span></Link>
-                            </p>
-                            <Link to='/register' className="button is-primary"><h1>Sign Up</h1></Link>
+                <div className="navbar p-3 mb-6 is-primary">
+                    <div className="navbar-brand">
+                        <div className="navbar-item">
+                            <span className="icon is-large">
+                                <span className="icon"><i class="fa-solid fa-bullhorn fa-3x"></i></span>
+                            </span>
+                        </div>
+                        <Link to='/' className="title is-1"><h1 className="has-text-white has-text-weight-bold">Link Share</h1></Link>
+                    </div>
+                    <div className="navbar-end">
+                        <div className="navbar-item">
+                            <div className="field is-grouped">
+                                <p className="control">
+                                    <Link to='/login' className="button is-primary" ><span>Login</span></Link>
+                                </p>
+                                <Link to='/register' className="button is-primary"><h1>Sign Up</h1></Link>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </header>
+            </header>
         )
     }
 }

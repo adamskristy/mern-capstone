@@ -82,11 +82,21 @@ header a {
   margin: 20px 0;
 } */
 
+@import url('https://fonts.googleapis.com/css2?family=Cantarell&display=swap');
+
 .form {
   width: 600px;
   padding: 20px;
 }
 
 .details{
+  width: 600px;
+}
+
+body {
+  font-family: "Cantarell";
+}
+
+.quote{
   width: 600px;
 }

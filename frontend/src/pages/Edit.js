@@ -5,6 +5,7 @@ import { useRatingsContext } from "../hooks/useRatingsContext";
 
 import ratingService from '../services/ratingService'
 
+import Back from "../components/Back";
 
 function Edit({ user }) {
 
@@ -85,10 +86,10 @@ function Edit({ user }) {
     }
 
     return (
-        <div className="form container p-6">
+        <div className="form container p-3">
             <div className='box'>
                 <form onSubmit={handleSubmit}>
-                    <h3 className='title'>Edit your Rating</h3>
+                    <h3 className='title'>Edit your Share</h3>
 
                     <div className="field is-grouped">
                         <div className='control'>
@@ -193,8 +194,10 @@ function Edit({ user }) {
                         />
                     </div>
                     <button className='button is-primary'>Submit</button>
-
                 </form>
+            </div>
+            <div className='level-item'>
+                <Back />
             </div>
         </div>
     );

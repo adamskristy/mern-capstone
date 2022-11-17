@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import RatingDetails from "../components/RatingDetails";
 
+
 import ratingService from '../services/ratingService'
 
 function Profile({ username, email }) {
@@ -34,13 +35,13 @@ function Profile({ username, email }) {
         return (
             <div className="container p-6">
                 <div className="profile-details block ">
-                    <h1  className="title">Profile</h1>
-                    <h3>Account Information</h3>
+                    <h1 className="title">Profile</h1>
+                    <h3 className="title is-5">Account Information</h3>
                     <p>Username: {username}</p>
                     <p>Email: {email}</p>
                 </div>
                 <div className="field p-4">
-                    <button onClick={handleClick} className="button is-primary">Submit new rating</button>
+                    <button onClick={handleClick} className="button is-primary">Submit New Share</button>
                 </div>
 
                 <div className="profile-ratings">
@@ -66,7 +67,7 @@ function Profile({ username, email }) {
                     <p>Username: {username}</p>
                     <p>Email: {email}</p>
                 </div>
-                <button onClick={handleClick}>Submit new rating</button>
+                <button onClick={handleClick}>Submit New Share</button>
                 <div className="ratings-container">
                     <h2>No ratings to display...</h2>
                 </div>

@@ -34,7 +34,7 @@ function Main() {
     return (
         <div className="container">
             <div className="control p-2">
-                <button onClick={handleClick} className="button is-primary">Submit new rating</button>
+                <button onClick={handleClick} className="button is-primary">Submit New Share</button>
             </div>
             <div className="ratings-container">
 

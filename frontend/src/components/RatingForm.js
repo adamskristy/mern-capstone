@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import ratingService from '../services/ratingService'
 
+import Back from "../components/Back";
+
 function RatingForm({ user }) {
 
     const navigate = useNavigate()
@@ -63,10 +65,10 @@ function RatingForm({ user }) {
 
 
     return (
-        <div className="form container p-6">
+        <div className="form container p-3">
         <div className='box'>
             <form onSubmit={handleSubmit}>
-                <h3 className='title'>Submit a Rating</h3>
+                <h3 className='title'>Submit a Share</h3>
 
                 <div className="field is-grouped">
                     <div className='control'>
@@ -173,6 +175,9 @@ function RatingForm({ user }) {
                 <button className='button is-primary'>Submit</button>
                 {error && <div className="error">{error}</div>}
             </form>
+            </div>
+            <div className='level-item'>
+                <Back />
             </div>
         </div>
     );
