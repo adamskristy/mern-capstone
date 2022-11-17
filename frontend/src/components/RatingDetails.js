@@ -37,9 +37,9 @@ function RatingDetails({ rating }) {
             </div>
             <div className="block">
             <h3 className="title is-4">{rating.title}</h3>
-            <p className="is-italic tag is-light">{rating.cost}</p>
+            <p className="is-italic tag is-light mb-2">{rating.cost}</p>
             <p>{rating.type}</p>
-            <p>{rating.platform}</p>
+            <p className="has-text-weight-bold">{rating.platform}</p>
             <p>{rating.notes}</p>
             <a href={rating.link} className="is-underlined"><p>Check it out</p></a>
             </div>
