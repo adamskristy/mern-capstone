@@ -30,8 +30,6 @@ function Profile({ username, email }) {
         navigate('/add')
     }
 
-
-    const loaded = () => {
         return (
             <div className="container p-6">
                 <div className="profile-details block ">
@@ -46,35 +44,17 @@ function Profile({ username, email }) {
 
                 <div className="profile-ratings">
 
-                    {ratings && ratings.map((rating) => {
+                    {ratings ? ratings.map((rating) => {
                         return (
                             <RatingDetails key={rating._id} rating={rating} />
                         )
-                    })}
-
+                    }) : ( <div>You haven't submitted any shares yet.</div> 
+                )}
 
                 </div>
             </div>
         );
-    }
-
-    const loading = () => {
-        return (
-            <div className="profile">
-                <div className="profile-ratings">
-                    <h1>Profile</h1>
-                    <h3>Account Information</h3>
-                    <p>Username: {username}</p>
-                    <p>Email: {email}</p>
-                </div>
-                <button onClick={handleClick}>Submit New Share</button>
-                <div className="ratings-container">
-                    <h2>No ratings to display...</h2>
-                </div>
-            </div>
-        );
-    }
-    return ratings ? loaded() : loading()
+    
 }
 
 export default Profile;
