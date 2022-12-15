@@ -34,10 +34,16 @@ I chose this app due to the many hours spent researching, googling, and watching
 It was really hard to come up with an idea for this project. All the recommendation I found online didnt spark any interest for me. It took a lot of brainstorming and whiteboard in Miro to finally settle on an idea. We were on a deadline as well so I didnt start this project off the way I normally do, which is with some type of plan our outline of what the site should do and how it looks. Because of that I had to redo my code and fix a lot of unecessary mistakes. Once I finally stopped and got my idea together the rest fell in place.
 
 ## Roadmap
-- filtering by categories
+- filtering options
 - like buttons or star ratings
 - comments feature
 - pagination
+- loading indicator for login/sign up
+- conditional rendering for edit/delete buttons
+- better error handling
+- display message on profile page
+- better responsiveness
+
 
 ## Acknowledgements
 
